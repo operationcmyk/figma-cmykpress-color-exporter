@@ -1,9 +1,10 @@
 {
-  "name": "Color Import / Export",
-  "id": "1143682832255826428",
+  "name": "CMYKPress Color Export",
+  "id": "1387867254425367476",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/ui.html",
+  "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": [
       "https://*.sentry.io",
