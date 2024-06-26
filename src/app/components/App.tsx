@@ -29,27 +29,16 @@ function App() {
   }
 
   return (
-    <Tabs
-      aria-label="Select screen"
-      defaultValue={0}
+    <Box
       sx={{
         background: 'none',
         padding: '8px',
       }}
     >
       <Box marginBottom={1}>
-        <TabList size="sm" defaultValue={1}>
-          <Tab onChange={onTabChange}>Export</Tab>
-          <Tab onChange={onTabChange}>Import</Tab>
-        </TabList>
-      </Box>
-      <TabPanel value={0}>
         <ExportScreen />
-      </TabPanel>
-      <TabPanel value={1}>
-        <ImportScreen />
-      </TabPanel>
-    </Tabs>
+      </Box>
+    </Box>
   );
 }
 

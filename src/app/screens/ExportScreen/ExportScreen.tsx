@@ -30,7 +30,7 @@ export function ExportScreen() {
   const [language, setLanguage] = useState<LanguageTypes>(Languages.JSON);
   const languageOptions = useMemo(() => LanguageRecord[language], [language]);
 
-  const [caseType, setCaseType] = useState<CaseTypes>(Case.CONSTANT);
+  const [caseType, setCaseType] = useState<CaseTypes>(Case.PARAM);
   const caseFn = useMemo(() => {
     if (languageOptions?.supportedCaseStyles.includes(caseType)) {
       return CaseMap[caseType];
@@ -41,7 +41,7 @@ export function ExportScreen() {
     return CaseMap[languageOptions.supportedCaseStyles[0]];
   }, [caseType, languageOptions, setCaseType]);
 
-  const [model, setModel] = useState<ColorModelType>(ColorModels.RGB);
+  const [model, setModel] = useState<ColorModelType>(ColorModels.HEX);
 
   const [pathHandling, setPathHandling] = useState<PathHandlingType>(PathHandlingTypes.KEEP);
 
@@ -56,7 +56,10 @@ export function ExportScreen() {
           if (pathHandling == PathHandlingTypes.IGNORE && style.name.includes('/')) {
             name = style.name.substring(style.name.lastIndexOf('/') + 1, style.name.length);
           }
-          acc[caseFn(name)] = result;
+          acc[caseFn(name)] = {
+            name: name,
+            value: result
+          };
         }
 
         if (isGradientPaint(ps)) {
